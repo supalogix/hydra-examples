@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  node-app:
+    image: node-app
+    build:
+      context: ./node-app
+    environment:
+      - url=http://node-app:8080
+    ports:
+      - 8080:8080
+  hydra-console:
+    image: hydra-console
+    build:
+      context: ./hydra-console
+    ports:
+      - 8000:8000
+    depends_on:
+      - node-app
